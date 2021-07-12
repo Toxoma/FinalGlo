@@ -6,15 +6,34 @@ const burgerMenu = ()=>{
   const closeMenu = document.querySelector('.close-menu');
 
   const appear = ()=>{
+    menu.style.transition = '1s';
     menu.style.transform = 'translateX(0px)';
   };
-  const disappear = ()=>{
-    menu.style.transform = 'translateX(645px)';
-  };
 
+  const disappear = ()=>{
+
+    let cord = 'X',
+    value = '100%';
+
+    if (window.outerWidth<576) {
+      cord = 'Y';
+      value = '-100%';
+    }
+
+    menu.style.transform = `translate${cord}(${value})`;
+  };
 
   icon.addEventListener('click',appear);
   closeMenu.addEventListener('click',disappear);
+
+  window.addEventListener('resize',()=>{
+    menu.style.transition = '0s';
+    if (window.outerWidth<576) {
+      menu.style.transform= 'translate3d(0,-100%,0)';
+    }else{
+      menu.style.transform= 'translate3d(100%,0,0)';
+    }
+  });
 };
 
 export default burgerMenu;
