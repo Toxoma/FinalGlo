@@ -3,6 +3,7 @@ import burgerMenu from './moduls/burgerMenu.js';
 import scrollLinks from './moduls/scrollLinks.js';
 import popupRepairTypes from './moduls/popupRepairTypes.js';
 import validator from './moduls/validator.js';
+import privacyLinks from './moduls/privacyLinks.js';
 
 //раскрывающийся список
 list();
@@ -18,3 +19,6 @@ popupRepairTypes();
 
 //validator
 validator();
+
+//validator
+privacyLinks();
