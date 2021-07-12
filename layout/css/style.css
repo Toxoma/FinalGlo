@@ -9011,3 +9011,12 @@ strong {
 .rotate-block {
   transform: rotateX(180deg);
 }
+
+.success{
+  border: 2px solid green;
+  border-radius: 20px;
+}
+.error{
+  border: 2px solid red;
+  border-radius: 20px;
+}
