@@ -1,11 +1,13 @@
 import list from './moduls/list.js';
 import burgerMenu from './moduls/burgerMenu.js';
+import scrollLinks from './moduls/scrollLinks.js';
 
 //раскрывающийся список
 list();
 
-//раскрывающийся список
+//бургер меню
 burgerMenu();
 
-
+//плавная прокрутка
+scrollLinks();
 
