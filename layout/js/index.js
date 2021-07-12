@@ -2,6 +2,7 @@ import list from './moduls/list.js';
 import burgerMenu from './moduls/burgerMenu.js';
 import scrollLinks from './moduls/scrollLinks.js';
 import popupRepairTypes from './moduls/popupRepairTypes.js';
+import validator from './moduls/validator.js';
 
 //раскрывающийся список
 list();
@@ -14,3 +15,6 @@ scrollLinks();
 
 //popup-repair-types
 popupRepairTypes();
+
+//validator
+validator();
