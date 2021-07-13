@@ -1029,6 +1029,7 @@ template,
   .formula .wrapper_small {
     margin-top: 42px;
     max-width: 810px;
+    height: 550px;
   }
 }
 
