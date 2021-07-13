@@ -4,6 +4,7 @@ import scrollLinks from './moduls/scrollLinks.js';
 import popupRepairTypes from './moduls/popupRepairTypes.js';
 import validator from './moduls/validator.js';
 import privacyLinks from './moduls/privacyLinks.js';
+import circles from './moduls/circles.js';
 
 //раскрывающийся список
 list();
@@ -22,3 +23,6 @@ validator();
 
 //validator
 privacyLinks();
+
+//circles
+circles();

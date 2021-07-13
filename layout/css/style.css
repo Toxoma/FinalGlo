@@ -1193,6 +1193,7 @@ template,
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+
 }
 
 .formula-title {
@@ -1255,7 +1256,7 @@ template,
   font-weight: 300;
   text-align: center;
   color: #000000;
-  z-index: 0;
+
 }
 
 .formula-item strong {
@@ -1349,6 +1350,7 @@ template,
   -webkit-transform: translate3d(0, -5px, 0);
   transform: translate3d(0, -5px, 0);
   opacity: 0.1;
+  z-index: 1;
 }
 
 .formula-item-popup p {
@@ -8679,7 +8681,7 @@ strong {
   font-size: 30px;
   line-height: 35px;
   color: #322823;
-  z-index: 0;
+  z-index: -5;
 }
 
 @media (max-width: 1024px) {
@@ -9020,3 +9022,4 @@ strong {
   border: 2px solid red;
   border-radius: 20px;
 }
+
