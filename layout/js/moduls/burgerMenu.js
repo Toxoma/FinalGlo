@@ -2,8 +2,17 @@
 
 const burgerMenu = ()=>{
   const icon = document.querySelector('.menu__icon');
+
+  const footer = document.querySelector('.footer');
+  const menuFooter  = footer.querySelector('.menu');
+  const menuFooterIcon  = menuFooter.querySelector('.menu__icon');
+
   const menu = document.querySelector('.popup-dialog-menu');
   const closeMenu = document.querySelector('.close-menu');
+
+  const arrIcons = [menuFooterIcon,icon];
+
+  menuFooter.style.display = 'block';
 
   const appear = ()=>{
     menu.style.transition = '1s';
@@ -23,7 +32,9 @@ const burgerMenu = ()=>{
     menu.style.transform = `translate${cord}(${value})`;
   };
 
-  icon.addEventListener('click',appear);
+  arrIcons.forEach(item=>item.addEventListener('click',appear));
+
+  // icon.addEventListener('click',appear);
   closeMenu.addEventListener('click',disappear);
 
   window.addEventListener('resize',()=>{
