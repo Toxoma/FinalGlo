@@ -4,9 +4,9 @@ import formObject from './formObject.js';
 
 const validator = ()=>{
   const forms = document.querySelectorAll('form');
-  const phoneValid = new RegExp(/^\+7\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}$/);
+  const phoneValid = new RegExp(/^\+7\d{3}\d{3}\d{2}\d{2}$/);
   // const phoneValid = new RegExp(/\+7\s{0,1}?\(\d{3}\)\s{0,1}?\d{3}\-\d{2}\-\d{2}/);
-  const remove = new RegExp(/[^\+\d\-\(\)\s]/g);
+  const remove = new RegExp(/[^\+\d]/g);
 
 
   forms.forEach(form=>{
