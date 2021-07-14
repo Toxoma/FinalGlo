@@ -22,23 +22,35 @@ const repairTypes = ()=>{
   const navArrowLeft = repairTypesWrap.querySelector('.nav-arrow_left');
   const navArrowRight = repairTypesWrap.querySelector('.nav-arrow_right');
 
+
+  const winWidth = document.querySelector('.repair-types-nav').clientWidth;
+  const maxNavWidth = document.querySelector('.nav-list-repair').clientWidth;
+  const countWidth = 5;
+  let currentWidthCount = 0;
   let changeWidth=0;
+  const scrollWidth = maxNavWidth-winWidth;
+  const addWidth = Math.floor(scrollWidth/countWidth);
+
   navArrowLeft.addEventListener('click',()=>{
-    if (changeWidth===0) {
-      changeWidth=-41;
+    if (currentWidthCount>0) {
+      currentWidthCount--;
+      changeWidth -=addWidth;
     }else{
-      changeWidth=0;
+      currentWidthCount = countWidth;
+      changeWidth = scrollWidth;
     }
-    navListRepair.style.transform= `translateX(${changeWidth}%)`;
+    navListRepair.style.transform= `translateX(${-changeWidth}px)`;
   });
 
   navArrowRight.addEventListener('click',()=>{
-    if (changeWidth===-41) {
-      changeWidth=0;
+    if (currentWidthCount<countWidth) {
+      currentWidthCount++;
+      changeWidth +=addWidth;
     }else{
-      changeWidth=-41;
+      currentWidthCount = 0;
+      changeWidth = 0;
     }
-    navListRepair.style.transform= `translateX(${changeWidth}%)`;
+    navListRepair.style.transform= `translateX(${-changeWidth}px)`;
   });
 
 
