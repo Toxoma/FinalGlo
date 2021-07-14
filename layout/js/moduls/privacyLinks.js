@@ -1,4 +1,5 @@
 "use strict";
+import closeAllPopup from './closeAllPopup.js';
 
 const privacyLinks = ()=>{
   const links = document.querySelectorAll('.link-privacy');
@@ -7,6 +8,7 @@ const privacyLinks = ()=>{
 
   links.forEach(link=>link.addEventListener('click',()=>{
     popupPrivacy.style.visibility =  'visible';
+    closeAllPopup(popupPrivacy);
   }));
 
   close.addEventListener('click',()=>{

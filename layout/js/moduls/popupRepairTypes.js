@@ -1,4 +1,5 @@
 "use strict";
+import closeAllPopup from './closeAllPopup.js';
 
 const popupRepairTypes = ()=>{
   const linkMenu = document.querySelector('.link-list-menu > a');
@@ -9,6 +10,7 @@ const popupRepairTypes = ()=>{
 
   arr.forEach(item=>item.addEventListener('click',()=>{
     popupRepairTypes.style.visibility= 'visible';
+    closeAllPopup(popupRepairTypes);
   }));
 
   closeBtn.addEventListener('click',()=>{
