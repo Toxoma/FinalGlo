@@ -14,9 +14,24 @@ const burgerMenu = ()=>{
 
   menuFooter.style.display = 'block';
 
+  const outsideClick = (e)=>{
+    const target = e.target;
+
+    if (target.closest('.popup-dialog-menu') && target!==closeMenu) {
+      return;
+    }
+
+    document.removeEventListener('click',outsideClick);
+    closeMenu.click();
+  };
+
   const appear = ()=>{
     menu.style.transition = '1s';
     menu.style.transform = 'translateX(0px)';
+
+    setTimeout(()=>{
+      document.addEventListener('click',outsideClick);
+    },100);
   };
 
   const disappear = ()=>{
@@ -45,6 +60,7 @@ const burgerMenu = ()=>{
       menu.style.transform= 'translate3d(100%,0,0)';
     }
   });
+
 };
 
 export default burgerMenu;
