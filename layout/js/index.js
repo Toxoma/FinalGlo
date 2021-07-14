@@ -5,6 +5,7 @@ import popupRepairTypes from './moduls/popupRepairTypes.js';
 import validator from './moduls/validator.js';
 import privacyLinks from './moduls/privacyLinks.js';
 import circles from './moduls/circles.js';
+import repairTypes from './moduls/repairTypes.js';
 
 //раскрывающийся список
 list();
@@ -27,3 +28,5 @@ privacyLinks();
 //circles
 circles();
 
+//repairTypes
+repairTypes();

@@ -2,13 +2,15 @@
 import closeAllPopup from './closeAllPopup.js';
 
 const popupRepairTypes = ()=>{
+  const linkList= document.querySelectorAll('.link-list');
+
   const linkMenu = document.querySelector('.link-list-menu > a');
   const link = document.querySelector('.repair-types-tab>.link-list>a');
   const arr = [linkMenu,link];
   const popupRepairTypes = document.querySelector('.popup-repair-types');
   const closeBtn = document.querySelector('.popup-repair-types > .close');
 
-  arr.forEach(item=>item.addEventListener('click',()=>{
+  linkList.forEach(item=>item.addEventListener('click',()=>{
     popupRepairTypes.style.visibility= 'visible';
     closeAllPopup(popupRepairTypes);
   }));
