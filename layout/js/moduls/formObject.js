@@ -13,25 +13,42 @@ const sendObject = (data, form) => {
     checkboxLabel.click();
   };
 
-  const request = new XMLHttpRequest();
+  const popup =()=>{
+    const popupThank = document.querySelector('.popup-thank');
 
-  request.addEventListener('readystatechange', () => {
-    if (request.readyState !== 4) {
-      return;
+    popupThank.style.visibility = 'visible';
+
+    const clickOut=(e)=>{
+      if (!e.target.closest('.popup-thank-bg') || e.target.closest('.close')) {
+        popupThank.style.visibility = 'hidden';
+        document.removeEventListener('click',clickOut);
+      }
+    };
+
+    setTimeout(() => {
+      document.addEventListener('click',clickOut);
+    }, 100);
+  };
+
+  fetch('./server.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  })
+  .then((response) => {
+    if (response.status !== 200) {
+      throw new Error('status network not 200');
     }
-
-    if (request.status === 200) {
-      console.log('success!!!');
-    } else {
-      console.error(request.status);
-    }
-
+  })
+  .then(()=>{
+    popup();
     clearInput(form);
+  })
+  .catch(err => {
+    console.error(err);
   });
-
-  request.open('POST', '/layout/server.php');
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.send(JSON.stringify(data));
 
 };
 
@@ -43,7 +60,9 @@ const formObject = (form) => {
     arr[key] = value;
   });
 
-  sendObject({...arr}, form);
+  sendObject({
+    ...arr
+  }, form);
 };
 
 export default formObject;

@@ -7670,6 +7670,7 @@ div.wave-block:nth-child(17):after {
   cursor: pointer;
   background: transparent;
   background-size: contain;
+  flex: 0 0 100%;
 }
 
 .button_o svg {
