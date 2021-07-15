@@ -19,8 +19,8 @@ const closeAllPopup = (value)=>{
   if (value!==popupPrivacy) {
     closePrivacy.click();
   }
-
-
 };
+
+
 
 export default closeAllPopup;
