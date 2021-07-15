@@ -9,6 +9,7 @@ import repairTypes from './moduls/repairTypes.js';
 import portfolio from './moduls/portfolio.js';
 import documents from './moduls/documents.js';
 import consultation from './moduls/consultation.js';
+import feedback from './moduls/feedback.js';
 
 //раскрывающийся список
 list();
@@ -42,3 +43,6 @@ documents();
 
 //consultation
 consultation();
+
+//feedback
+feedback();
