@@ -2530,6 +2530,7 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1090px) {
   .transparency-item {
+    flex: 0 0 100%;
     margin-left: auto;
     margin-right: auto;
   }

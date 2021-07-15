@@ -7,6 +7,7 @@ import privacyLinks from './moduls/privacyLinks.js';
 import circles from './moduls/circles.js';
 import repairTypes from './moduls/repairTypes.js';
 import portfolio from './moduls/portfolio.js';
+import documents from './moduls/documents.js';
 
 //раскрывающийся список
 list();
@@ -34,3 +35,6 @@ repairTypes();
 
 //portfolio
 portfolio();
+
+//documents
+documents();
