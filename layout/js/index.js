@@ -8,6 +8,7 @@ import circles from './moduls/circles.js';
 import repairTypes from './moduls/repairTypes.js';
 import portfolio from './moduls/portfolio.js';
 import documents from './moduls/documents.js';
+import consultation from './moduls/consultation.js';
 
 //раскрывающийся список
 list();
@@ -38,3 +39,6 @@ portfolio();
 
 //documents
 documents();
+
+//consultation
+consultation();

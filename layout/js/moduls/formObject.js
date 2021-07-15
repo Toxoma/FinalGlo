@@ -5,10 +5,12 @@ const sendObject = (data, form) => {
 
   const clearInput = (form) => {
     const inputs = form.querySelectorAll('input');
+    const checkboxLabel = form.querySelector('.checkbox__label');
     inputs.forEach(input => {
       input.value = '';
       input.classList.remove('success');
     });
+    checkboxLabel.click();
   };
 
   const request = new XMLHttpRequest();

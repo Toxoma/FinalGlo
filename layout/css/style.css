@@ -7872,7 +7872,7 @@ div.wave-block:nth-child(17):after {
   }
 }
 
-.checkbox__label:after {
+.checkbox__label::after {
   position: absolute;
   top: 6px;
   left: 4px;
