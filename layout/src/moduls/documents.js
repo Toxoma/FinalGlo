@@ -28,6 +28,7 @@ const documents = () => {
 
   const switchFotoMain =()=>{
     transparencySlider.style.transform = `translateX(${-100*currentCounter}%)`;
+    console.log(currentCounter);
   };
 
   const slider = () => {
@@ -50,6 +51,7 @@ const documents = () => {
     const slides = slider.querySelectorAll('.popup-transparency-slider__slide');
 
     const switchFoto =()=>{
+      console.log(currentCounter);
       slider.prepend(slides[currentCounter]);
     };
 
@@ -65,14 +67,15 @@ const documents = () => {
 
     const clickOut=(e)=>{
       if (!e.target.closest('.popup-dialog-transparency') || e.target.closest('.close')) {
-        switchFotoMain();
         popupTransparency.style.visibility = 'hidden';
         document.removeEventListener('click',clickOut);
+        currentCounter = 0;
       }
     };
 
-    transparencyItems.forEach(item=>item.addEventListener('click',()=>{
+    transparencyItems.forEach((item,key)=>item.addEventListener('click',()=>{
       popupTransparency.style.visibility = 'visible';
+      currentCounter = key;
       switchFoto();
       setTimeout(() => {
         document.addEventListener('click',clickOut);
