@@ -10,6 +10,7 @@ import portfolio from './moduls/portfolio.js';
 import documents from './moduls/documents.js';
 import consultation from './moduls/consultation.js';
 import feedback from './moduls/feedback.js';
+import questions from './moduls/questions.js';
 
 //раскрывающийся список
 list();
@@ -46,3 +47,6 @@ consultation();
 
 //feedback
 feedback();
+
+//questions
+questions();
