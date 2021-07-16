@@ -4,6 +4,8 @@ const repairTypes = ()=>{
   let currentBlock = 0;
   let currentValue = 0;
   let maxValue = 0;
+  let counterTransform = 0;
+
 
   const repairTypesWrap = document.querySelector('.repair-types-tab');
   const btns = repairTypesWrap.querySelectorAll('button');
@@ -53,9 +55,6 @@ const repairTypes = ()=>{
     navListRepair.style.transform= `translateX(${-changeWidth}px)`;
   });
 
-
-
-
   const check = (i,max)=>{
     let k = i;
     if (k<0) {
@@ -104,6 +103,7 @@ const repairTypes = ()=>{
     btn.classList.add('active');
     removeActive(btn);
     currentBlock = btn.value;
+    counterTransform = currentBlock;
     repairTypesSlider.prepend(arr[currentBlock]);
     maxSlides = arr[currentBlock].querySelectorAll('.repair-types-slider__slide');
     maxValue = maxSlides.length;
@@ -111,6 +111,32 @@ const repairTypes = ()=>{
     currentValue=0;
     switchFoto(currentValue);
   }));
+
+
+
+  if (window.outerWidth<1024){
+    const svgs = document.querySelectorAll('.repair-types-nav__item > svg');
+    svgs.forEach(item=>{
+      item.setAttribute('preserveAspectRatio','none');
+    });
+  }
+
+  const arrowRepairLeftBase = document.getElementById('nav-arrow-repair-left_base');
+  const arrowRepairRightBase = document.getElementById('nav-arrow-repair-right_base');
+
+  const switchTransform=()=>{
+    navListRepair.style.transform = `translateX(-${100*counterTransform}%)`;
+  };
+
+  arrowRepairRightBase.addEventListener('click', () => {
+    counterTransform = check(++counterTransform,btns.length-1);
+    switchTransform();
+  });
+
+  arrowRepairLeftBase.addEventListener('click', () => {
+    counterTransform = check(--counterTransform,btns.length-1);
+    switchTransform();
+  });
 };
 
 export default repairTypes;

@@ -1701,6 +1701,7 @@ template,
 
   .repair-types-nav__item svg {
     height: 37px;
+    width: 100%;
   }
 }
 
@@ -1729,7 +1730,7 @@ template,
   }
 
   .repair-types-nav__item:first-child svg {
-    width: 205px;
+    /* width: 205px; */
   }
 }
 
@@ -1754,7 +1755,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(2) svg {
-    width: 240px;
+    /* width: 240px; */
   }
 }
 
@@ -1778,7 +1779,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(3) svg {
-    width: 220px;
+    /* width: 220px; */
   }
 }
 
@@ -1802,7 +1803,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(4) svg {
-    width: 212px;
+    /* width: 212px; */
   }
 }
 
@@ -1826,7 +1827,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(5) svg {
-    width: 266px;
+    /* width: 266px; */
   }
 }
 
@@ -7227,16 +7228,17 @@ div.wave-block:nth-child(17):after {
 .nav-list-repair {
   min-width: 390px;
   display: block;
+  transition: 1s;
 }
 
 @media (max-width: 1024px) {
   .nav-list-repair {
-    min-width: 1200px;
+    /* min-width: 1200px; */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
     max-width: 100%;
   }
 }

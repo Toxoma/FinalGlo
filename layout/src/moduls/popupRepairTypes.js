@@ -106,8 +106,6 @@ const popupRepairTypes = () => {
 
   };
 
-
-
   linkList.forEach(item => item.addEventListener('click', () => {
     setTimeout(() => {
       document.addEventListener('click', clickOut);

@@ -59,6 +59,10 @@ const burgerMenu = ()=>{
     }else{
       menu.style.transform= 'translate3d(100%,0,0)';
     }
+
+    if (window.outerWidth<1024){
+
+    }
   });
 
 };
