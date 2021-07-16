@@ -1,15 +1,15 @@
 "use strict";
 
+const clearInput = (form) => {
+  const inputs = form.querySelectorAll('input');
+  inputs.forEach(input => {
+    input.value = '';
+    input.classList.remove('success');
+  });
+};
+
 const sendObject = (data, form) => {
   console.log(JSON.stringify(data));
-
-  const clearInput = (form) => {
-    const inputs = form.querySelectorAll('input');
-    inputs.forEach(input => {
-      input.value = '';
-      input.classList.remove('success');
-    });
-  };
 
   const mistake = ()=>{
     const block = document.createElement('div');
@@ -27,7 +27,11 @@ const sendObject = (data, form) => {
     }, 1000);
   };
 
-  fetch('./server.php1', {
+  const saveLocal = (token)=>{
+    localStorage.setItem('token',token);
+  };
+
+  fetch('../server.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -39,27 +43,50 @@ const sendObject = (data, form) => {
       throw new Error('status network not 200');
     }
   })
-  .then(()=>{
+  .then((token='пришедший токен')=>{
     clearInput(form);
+    saveLocal(token);
+    window.location.href = 'table.html';
   })
   .catch(err => {
     console.error(err);
     clearInput(form);
     mistake();
   });
-
 };
 
 const formObject = (form) => {
   const name = document.getElementById('name');
   const password = document.getElementById('type');
+  let flag = true;
 
-  let arr = {
-    name: name.value,
-    password: password.value,
+  const mistake = (value)=>{
+    flag = false;
+    value.nextElementSibling.style.display = 'block';
   };
 
-  sendObject(arr, form);
+  [name,password].forEach(item=>{
+    if (item.name === 'name') {
+      if (name.value!=='admin') {
+        mistake(name);
+      }
+    }
+    if (item.name === 'password') {
+      if (password.value!=='admin1') {
+        mistake(password);
+      }
+    }
+  });
+
+  if (flag) {
+    let arr = {
+      name: name.value,
+      password: password.value,
+    };
+    sendObject(arr, form);
+  }else{
+    clearInput(form);
+  }
 
   const style = document.createElement('style');
   style.textContent = `

@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){var n=localStorage.getItem("token");if(!n||"undefined"===n){var o=window.location.href;console.log(o.lastIndexOf("/")),o=o.substring(0,o.lastIndexOf("/")),window.location.href=o}}()})();
