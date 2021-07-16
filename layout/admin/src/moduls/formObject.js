@@ -5,29 +5,10 @@ const sendObject = (data, form) => {
 
   const clearInput = (form) => {
     const inputs = form.querySelectorAll('input');
-    const checkboxLabel = form.querySelector('.checkbox__label');
     inputs.forEach(input => {
       input.value = '';
       input.classList.remove('success');
     });
-    checkboxLabel.click();
-  };
-
-  const popup =()=>{
-    const popupThank = document.querySelector('.popup-thank');
-
-    popupThank.style.visibility = 'visible';
-
-    const clickOut=(e)=>{
-      if (!e.target.closest('.popup-thank-bg') || e.target.closest('.close')) {
-        popupThank.style.visibility = 'hidden';
-        document.removeEventListener('click',clickOut);
-      }
-    };
-
-    setTimeout(() => {
-      document.addEventListener('click',clickOut);
-    }, 100);
   };
 
   const mistake = ()=>{
@@ -35,7 +16,7 @@ const sendObject = (data, form) => {
     block.className='mistake-block';
     block.insertAdjacentHTML('afterbegin',
     `
-    Ошибка отправки формы!!!
+    Ошибка авторизации!!!
     `);
     document.body.append(block);
     setTimeout(() => {
@@ -46,7 +27,7 @@ const sendObject = (data, form) => {
     }, 1000);
   };
 
-  fetch('./server.php', {
+  fetch('./server.php1', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -59,7 +40,6 @@ const sendObject = (data, form) => {
     }
   })
   .then(()=>{
-    popup();
     clearInput(form);
   })
   .catch(err => {
@@ -71,17 +51,15 @@ const sendObject = (data, form) => {
 };
 
 const formObject = (form) => {
-  const data = new FormData(form);
-  let arr = [];
+  const name = document.getElementById('name');
+  const password = document.getElementById('type');
 
-  data.forEach((value, key) => {
-    arr[key] = value;
-  });
+  let arr = {
+    name: name.value,
+    password: password.value,
+  };
 
-  sendObject({
-    ...arr
-  }, form);
-
+  sendObject(arr, form);
 
   const style = document.createElement('style');
   style.textContent = `
