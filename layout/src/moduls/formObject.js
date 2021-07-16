@@ -30,7 +30,23 @@ const sendObject = (data, form) => {
     }, 100);
   };
 
-  fetch('./server.php', {
+  const mistake = ()=>{
+    const block = document.createElement('div');
+    block.className='mistake-block';
+    block.insertAdjacentHTML('afterbegin',
+    `
+    Ошибка отправки формы!!!
+    `);
+    document.body.append(block);
+    setTimeout(() => {
+      block.classList.add('disapeare');
+      setTimeout(() => {
+        block.remove();
+      }, 2000);
+    }, 1000);
+  };
+
+  fetch('./server.php1', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -48,6 +64,8 @@ const sendObject = (data, form) => {
   })
   .catch(err => {
     console.error(err);
+    clearInput(form);
+    mistake();
   });
 
 };
@@ -63,6 +81,39 @@ const formObject = (form) => {
   sendObject({
     ...arr
   }, form);
+
+
+  const style = document.createElement('style');
+  style.textContent = `
+  .mistake-block{
+    position: fixed;
+    font-size: 30px;
+    color: red;
+    top: 50%;
+    left: 38%;
+    z-index: 999;
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+    border: 4px solid red;
+    transition: 2s;
+  }
+  @media (max-width: 1024px) {
+    .mistake-block {
+      left: 30%;
+    }
+  }
+  @media (max-width: 786px) {
+    .mistake-block {
+      left: 20%;
+    }
+  }
+  .disapeare{
+    opacity: 0;
+  }
+  `;
+  document.querySelector('head').insertAdjacentElement('beforeend',style);
+
 };
 
 export default formObject;
