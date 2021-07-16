@@ -25,6 +25,7 @@ const popupRepairTypes = () => {
     const arrowR = document.getElementById('nav-arrow-popup-repair_right');
     const arrowL = document.getElementById('nav-arrow-popup-repair_left');
     const slider = popupRepairTypes.querySelector('.nav-list-popup-repair');
+    const switchInner = document.getElementById('switch-inner');
     let currentCounter = 0;
 
     const check = (i,max= types.length-1)=>{
@@ -72,6 +73,7 @@ const popupRepairTypes = () => {
         } else {
           item.classList.add('active');
           tables[key].parentElement.classList.remove('hide');
+          switchInner.textContent =item.textContent;
         }
       });
     };
