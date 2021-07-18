@@ -1741,7 +1741,7 @@ template,
   }
 
   .repair-types-nav__item:first-child svg {
-    width: 205px;
+    width: 100%;
   }
 }
 
@@ -1765,7 +1765,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(2) svg {
-    width: 215px;
+    width: 100%;
   }
 }
 
@@ -1789,7 +1789,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(3) svg {
-    width: 200px;
+    width: 100%;
   }
 }
 
@@ -1813,7 +1813,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(4) svg {
-    width: 190px;
+    width: 100%;
   }
 }
 
@@ -1837,7 +1837,7 @@ template,
   }
 
   .repair-types-nav__item:nth-child(5) svg {
-    width: 223px;
+    width: 100%;
   }
 }
 
@@ -7220,13 +7220,13 @@ div.wave-block:nth-child(17):after {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-width: 1076px;
+  /* min-width: 1076px; */
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .nav-list-repair {
-  min-width: 390px;
+  /* min-width: 390px; */
   display: block;
   transition: 1s;
 }
@@ -7245,7 +7245,7 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 575px) {
   .nav-list-repair {
-    min-width: 1086px;
+    /* min-width: 1086px; */
   }
 }
 

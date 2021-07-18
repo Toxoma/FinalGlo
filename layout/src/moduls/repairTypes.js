@@ -1,6 +1,6 @@
 "use strict";
 
-const repairTypes = ()=>{
+const repairTypes = () => {
   let currentBlock = 0;
   let currentValue = 0;
   let maxValue = 0;
@@ -29,39 +29,39 @@ const repairTypes = ()=>{
   const maxNavWidth = document.querySelector('.nav-list-repair').clientWidth;
   const countWidth = 5;
   let currentWidthCount = 0;
-  let changeWidth=0;
-  const scrollWidth = maxNavWidth-winWidth;
-  const addWidth = Math.floor(scrollWidth/countWidth);
+  let changeWidth = 0;
+  const scrollWidth = maxNavWidth - winWidth;
+  const addWidth = Math.floor(scrollWidth / countWidth);
 
-  navArrowLeft.addEventListener('click',()=>{
-    if (currentWidthCount>0) {
+  navArrowLeft.addEventListener('click', () => {
+    if (currentWidthCount > 0) {
       currentWidthCount--;
-      changeWidth -=addWidth;
-    }else{
+      changeWidth -= addWidth;
+    } else {
       currentWidthCount = countWidth;
       changeWidth = scrollWidth;
     }
-    navListRepair.style.transform= `translateX(${-changeWidth}px)`;
+    navListRepair.style.transform = `translateX(${-changeWidth}px)`;
   });
 
-  navArrowRight.addEventListener('click',()=>{
-    if (currentWidthCount<countWidth) {
+  navArrowRight.addEventListener('click', () => {
+    if (currentWidthCount < countWidth) {
       currentWidthCount++;
-      changeWidth +=addWidth;
-    }else{
+      changeWidth += addWidth;
+    } else {
       currentWidthCount = 0;
       changeWidth = 0;
     }
-    navListRepair.style.transform= `translateX(${-changeWidth}px)`;
+    navListRepair.style.transform = `translateX(${-changeWidth}px)`;
   });
 
-  const check = (i,max)=>{
+  const check = (i, max) => {
     let k = i;
-    if (k<0) {
-      k=max;
+    if (k < 0) {
+      k = max;
     }
-    if (k>max) {
-      k=0;
+    if (k > max) {
+      k = 0;
     }
     return k;
   };
@@ -72,24 +72,24 @@ const repairTypes = ()=>{
   totalCounter.textContent = maxValue;
 
 
-  const switchFoto =(value)=>{
-    currentCounter.textContent = value+1;
+  const switchFoto = (value) => {
+    currentCounter.textContent = value + 1;
     arr[currentBlock].prepend(maxSlides[value]);
   };
 
-  arrowLeft.addEventListener('click',()=>{
-    currentValue = check(--currentValue,maxValue-1);
+  arrowLeft.addEventListener('click', () => {
+    currentValue = check(--currentValue, maxValue - 1);
     switchFoto(currentValue);
   });
 
-  arrowRight.addEventListener('click',()=>{
-    currentValue = check(++currentValue,maxValue-1);
+  arrowRight.addEventListener('click', () => {
+    currentValue = check(++currentValue, maxValue - 1);
     switchFoto(currentValue);
   });
 
-  const removeActive=(value)=>{
-    btns.forEach(btn=>{
-      if (btn!==value) {
+  const removeActive = (value) => {
+    btns.forEach(btn => {
+      if (btn !== value) {
         btn.classList.remove('active');
       }
     });
@@ -99,7 +99,7 @@ const repairTypes = ()=>{
     btns[i].value = i;
   }
 
-  btns.forEach(btn=>btn.addEventListener('click',()=>{
+  btns.forEach(btn => btn.addEventListener('click', () => {
     btn.classList.add('active');
     removeActive(btn);
     currentBlock = btn.value;
@@ -108,33 +108,36 @@ const repairTypes = ()=>{
     maxSlides = arr[currentBlock].querySelectorAll('.repair-types-slider__slide');
     maxValue = maxSlides.length;
     totalCounter.textContent = maxValue;
-    currentValue=0;
+    currentValue = 0;
     switchFoto(currentValue);
   }));
 
+  const windowCheck = () => {
+    if (window.outerWidth <= 1024) {
+      const svgs = document.querySelectorAll('.repair-types-nav__item > svg');
+      svgs.forEach(item => {
+        item.setAttribute('preserveAspectRatio', 'none');
+      });
+    }
+  };
 
-
-  if (window.outerWidth<1024){
-    const svgs = document.querySelectorAll('.repair-types-nav__item > svg');
-    svgs.forEach(item=>{
-      item.setAttribute('preserveAspectRatio','none');
-    });
-  }
+  window.addEventListener('resize', windowCheck);
+  windowCheck();
 
   const arrowRepairLeftBase = document.getElementById('nav-arrow-repair-left_base');
   const arrowRepairRightBase = document.getElementById('nav-arrow-repair-right_base');
 
-  const switchTransform=()=>{
+  const switchTransform = () => {
     navListRepair.style.transform = `translateX(-${100*counterTransform}%)`;
   };
 
   arrowRepairRightBase.addEventListener('click', () => {
-    counterTransform = check(++counterTransform,btns.length-1);
+    counterTransform = check(++counterTransform, btns.length - 1);
     switchTransform();
   });
 
   arrowRepairLeftBase.addEventListener('click', () => {
-    counterTransform = check(--counterTransform,btns.length-1);
+    counterTransform = check(--counterTransform, btns.length - 1);
     switchTransform();
   });
 };

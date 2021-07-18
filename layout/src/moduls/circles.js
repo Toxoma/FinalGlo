@@ -123,6 +123,14 @@ const circles = ()=>{
   .formula-item{
     flex: 0 0 ${maxElemsWidth}%;
   }
+  @media (max-width: 576px) {
+    .formula-item {
+      flex: 0 0 100%;
+    }
+    .formula-slider{
+      transform: translateX(-100%);
+    }
+  }
   .formula-slider__slide:before{
     z-index: 0;
   }
