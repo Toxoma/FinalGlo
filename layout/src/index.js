@@ -11,6 +11,7 @@ import documents from './moduls/documents.js';
 import consultation from './moduls/consultation.js';
 import feedback from './moduls/feedback.js';
 import questions from './moduls/questions.js';
+import servidesSlider from './moduls/servidesSlider.js';
 
 //раскрывающийся список
 list();
@@ -50,3 +51,6 @@ feedback();
 
 //questions
 questions();
+
+//servidesSlider
+servidesSlider();

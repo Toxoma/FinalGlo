@@ -1,3 +1,5 @@
+
+
 const getData = () => {
   'use strict';
 
@@ -10,15 +12,12 @@ const getData = () => {
   };
 
   const formTbody = (type, data) => {
-    console.log('type: ', type);
     const tbody = document.getElementById('tbody');
     let arr = data;
 
     if (type !== all) {
       arr = data.filter(item => item.type === type);
     }
-
-    console.log('arr: ', arr);
 
     tbody.textContent = '';
 
@@ -72,6 +71,8 @@ const getData = () => {
     typeItem.addEventListener('change', (e) => {
       formTbody(e.target.options[e.target.selectedIndex].textContent, data);
     });
+
+
   };
 
 
@@ -90,10 +91,6 @@ const getData = () => {
     .catch(err => {
       console.error(err);
     });
-
-
-
-
 
 };
 

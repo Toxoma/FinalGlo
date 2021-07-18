@@ -198,23 +198,23 @@
 			<!--<h3 class="modal__header">Изменение услуги</h3>-->
 			<form>
 				<label class="label">
-					<input id="type" class="input input__type" placeholder="Тип услуги*">
+					<input id="type" class="input input__type" placeholder="Тип услуги*" data-info='type' required>
 				</label>
 
 				<label class="label">
-					<input id="name" class="input input__name" placeholder="Виды работ*">
+					<input id="name" class="input input__name" placeholder="Виды работ*" data-info='name' required>
 				</label>
 
 				<label class="label">
-					<input id="units" class="input input__units" placeholder="Единицы измерения*">
+					<input id="units" class="input input__units" placeholder="Единицы измерения*" data-info='units' required>
 				</label>
 
 				<label class="label">
-					<input id="cost" class="input input__cost" placeholder="Цена*">
+					<input id="cost" class="input input__cost" placeholder="Цена*" data-info='cost' required>
 				</label>
 
-				<button class="button button-ui_firm"><span>Сохранить</span></button>
-				<button class="button cancel-button"><span>Отмена</span></button>
+				<button type="submit" class="button button-ui_firm"><span>Сохранить</span></button>
+				<button type="reset" class="button cancel-button"><span>Отмена</span></button>
 			</form>
 		</div>
 	</div>

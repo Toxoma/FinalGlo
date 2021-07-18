@@ -48,6 +48,14 @@ const portfolio = () => {
        display: flex;
        transition: all 1s ease 0s;
     }
+    @media (min-width: 1025px) {
+      .slider-counter {
+        top: 550px;
+      }
+      .popup-portfolio-slider-wrap .popup-arrow{
+        top: 300px;
+      }
+    }
     `;
     document.querySelector('head').insertAdjacentElement('beforeend', style);
   };
