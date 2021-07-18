@@ -4,9 +4,9 @@ import formObject from './formObject.js';
 
 const validator = ()=>{
   const forms = document.querySelectorAll('form');
-  const phoneValid = new RegExp(/^\+?\d{11}$/);
+  const phoneValid = new RegExp(/^\+7\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}$/);
   // const phoneValid = new RegExp(/\+7\s{0,1}?\(\d{3}\)\s{0,1}?\d{3}\-\d{2}\-\d{2}/);
-  const remove = new RegExp(/[^\+\d]/g);
+  const remove = new RegExp(/[^\d\+\(\)\-]\s/g);
 
 
   forms.forEach(form=>{
@@ -16,11 +16,26 @@ const validator = ()=>{
     const error = new Set();
     error.add(phone);
 
+    phone.addEventListener('focus',()=>{
+      phone.value = '+7 (';
+    });
+
     checkBox.required = true;
 
     phone.addEventListener('input',(e)=>{
+
       const target = e.target;
+      console.log('target.value: ', target.value);
       target.value = target.value.replace(remove,'');
+
+      if (/^\+7\s\(\d{3}$/.test(target.value)) {
+        phone.value += ') ';
+      }
+      if (/^\+7\s\(\d{3}\)\s\d{3}$/.test(target.value) ||
+      /^\+7\s\(\d{3}\)\s\d{3}\-\d{2}$/.test(target.value)
+      ) {
+        phone.value += '-';
+      }
 
       if (!phoneValid.test(target.value)) {
         target.classList.add('error');
