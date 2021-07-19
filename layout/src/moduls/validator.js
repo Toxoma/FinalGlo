@@ -37,6 +37,30 @@ const validator = ()=>{
 
     checkBox.required = true;
 
+    const clearError = (form)=>{
+      const inputs = form.querySelectorAll('.error');
+      inputs.forEach(item=>{
+        item.classList.remove('error');
+      });
+    };
+
+    const checkChkBox = (form)=>{
+        const label = form.querySelector('.checkbox__label');
+        const input = form.querySelector('input[name=phone]');
+
+        if (input.value) {
+          if (checkBox.checked) {
+            error.delete(checkBox);
+            label.classList.remove('error');
+          }else{
+            label.classList.add('error');
+            error.add(checkBox);
+          }
+        }else{
+          clearError(form);
+        }
+    };
+
     phone.addEventListener('input',(e)=>{
       const target = e.target;
 
@@ -65,25 +89,19 @@ const validator = ()=>{
         error.delete(phone);
       }
 
+      checkChkBox(form);
       check();
     });
 
-    checkBox.addEventListener('change',(e)=>{
-      const target = e.target;
-
-      if (target.checked) {
-        error.delete(checkBox);
-      }else{
-        error.add(checkBox);
-      }
-
-      check();
+    checkBox.addEventListener('change',()=>{
+      checkChkBox(form);
     });
 
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
       formObject(form);
     });
+
   });
 
 };
