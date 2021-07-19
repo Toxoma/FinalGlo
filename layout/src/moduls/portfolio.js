@@ -8,12 +8,18 @@ const portfolio = () => {
   const main = () => {
     const arrowLeft = wrap.querySelector('.slider-arrow_left-portfolio');
     const arrowRight = wrap.querySelector('.slider-arrow_right-portfolio');
-    const cols = wrap.querySelectorAll('.portfolio-slider__slide');
-    const widthWndow = slider.clientWidth;
-    const widthElem = cols[0].clientWidth;
 
-    const maxCounter = cols.length - widthWndow / widthElem;
+    const cols = wrap.querySelectorAll('.portfolio-slider__slide');
+    let widthWndow;
+    const widthElem = 352;
+
+    let maxCounter;
+
     let counter = 0;
+
+    const changeCol = ()=>{
+      row.style.transform = `translateX(-${widthElem*counter}px)`;
+    };
 
     const check = (i, max = maxCounter) => {
       let k = i;
@@ -30,17 +36,32 @@ const portfolio = () => {
       return k;
     };
 
+    const countCols = ()=>{
+      widthWndow = slider.clientWidth;
+
+      maxCounter = Math.round(cols.length - widthWndow / widthElem);
+      counter = 0;
+      check(counter);
+      changeCol();
+    };
+
+    countCols();
+
     check(counter);
 
     arrowRight.addEventListener('click', () => {
       counter = check(++counter);
-      row.style.transform = `translateX(-${widthElem*counter}px)`;
+      changeCol();
     });
 
     arrowLeft.addEventListener('click', () => {
       counter = check(--counter);
-      row.style.transform = `translateX(-${widthElem*counter}px)`;
+      changeCol();
     });
+
+      window.addEventListener('resize', () => {
+        countCols();
+      });
 
     const style = document.createElement('style');
     style.textContent = `

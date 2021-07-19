@@ -21,7 +21,6 @@ const servidesSlider = () => {
 
   const switchFotoMain =()=>{
     slider.style.transform = `translateX(${-100*currentCounter}%)`;
-    console.log(currentCounter);
   };
 
   arrowRight.addEventListener('click', () => {

@@ -28,7 +28,6 @@ const documents = () => {
 
   const switchFotoMain =()=>{
     transparencySlider.style.transform = `translateX(${-100*currentCounter}%)`;
-    console.log(currentCounter);
   };
 
   const slider = () => {
@@ -51,7 +50,6 @@ const documents = () => {
     const slides = slider.querySelectorAll('.popup-transparency-slider__slide');
 
     const switchFoto =()=>{
-      console.log(currentCounter);
       slider.prepend(slides[currentCounter]);
     };
 

@@ -9,7 +9,6 @@ const clearInput = (form) => {
 };
 
 const sendObject = (data, form) => {
-  console.log(JSON.stringify(data));
 
   const mistake = ()=>{
     const block = document.createElement('div');

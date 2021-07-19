@@ -36,6 +36,7 @@ const getData = () => {
       <td class="table-cost table__cell">
       ${item.cost} руб
       </td>
+
       <td>
         <div class="table__actions table__cell">
           <button value=${item.id} class="button action-change"><span class="svg_ui"><svg class="action-icon_change"><use xlink:href="./img/sprite.svg#change"></use></svg></span><span>Изменить</span>
@@ -74,8 +75,6 @@ const getData = () => {
 
 
   };
-
-
 
   getInfo()
     .then((response) => {

@@ -1,7 +1,6 @@
 "use strict";
 
 const sendObject = (data, form) => {
-  console.log(JSON.stringify(data));
 
   const clearInput = (form) => {
     const inputs = form.querySelectorAll('input');
@@ -27,6 +26,9 @@ const sendObject = (data, form) => {
 
     setTimeout(() => {
       document.addEventListener('click',clickOut);
+      setTimeout(() => {
+        document.querySelector('.popup-thank').click();
+      }, 2000);
     }, 100);
   };
 

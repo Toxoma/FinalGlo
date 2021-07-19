@@ -4,7 +4,6 @@ const checkAuth = ()=>{
   if (!key || key === 'undefined') {
     let href = window.location.href;
 
-    console.log(href.lastIndexOf('/'));
     href = href.substring(0,href.lastIndexOf('/'));
     window.location.href = href;
   }

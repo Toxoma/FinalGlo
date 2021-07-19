@@ -5,27 +5,41 @@ import formObject from './formObject.js';
 const validator = ()=>{
   const forms = document.querySelectorAll('form');
   const phoneValid = new RegExp(/^\+7\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}$/);
-  // const phoneValid = new RegExp(/\+7\s{0,1}?\(\d{3}\)\s{0,1}?\d{3}\-\d{2}\-\d{2}/);
-  const remove = new RegExp(/[^\d\+\(\)\-]\s/g);
-
+  const remove = new RegExp(/[^\d\+\(\)\-\s]/g);
 
   forms.forEach(form=>{
     const phone = form.querySelector('input[name=phone]');
     const subBtn = form.querySelector('button');
     const checkBox = form.querySelector('input[type=checkbox]');
+
     const error = new Set();
     error.add(phone);
+    error.add(checkBox);
 
-    phone.addEventListener('focus',()=>{
-      phone.value = '+7 (';
+    const check = ()=>{
+      if (error.size) {
+        subBtn.disabled = true;
+        subBtn.style.opacity = '0.6';
+      }else{
+        subBtn.disabled = false;
+        subBtn.style.opacity = '1';
+      }
+    };
+
+    subBtn.disabled = true;
+    subBtn.style.opacity = '0.6';
+
+    phone.addEventListener('focus',(e)=>{
+      if (!e.target.value) {
+        phone.value = '+7 (';
+      }
     });
 
     checkBox.required = true;
 
     phone.addEventListener('input',(e)=>{
-
       const target = e.target;
-      console.log('target.value: ', target.value);
+
       target.value = target.value.replace(remove,'');
 
       if (/^\+7\s\(\d{3}$/.test(target.value)) {
@@ -35,6 +49,10 @@ const validator = ()=>{
       /^\+7\s\(\d{3}\)\s\d{3}\-\d{2}$/.test(target.value)
       ) {
         phone.value += '-';
+      }
+
+      if (/^\+7\s\(\d{3}\)\s\d{3}\-\d{2}\-\d{2}/.test(target.value)) {
+        target.value = target.value.substr(0,18);
       }
 
       if (!phoneValid.test(target.value)) {
@@ -47,13 +65,19 @@ const validator = ()=>{
         error.delete(phone);
       }
 
-      if (error.size) {
-        subBtn.disabled = true;
-        subBtn.style.opacity = '0.6';
+      check();
+    });
+
+    checkBox.addEventListener('change',(e)=>{
+      const target = e.target;
+
+      if (target.checked) {
+        error.delete(checkBox);
       }else{
-        subBtn.disabled = false;
-        subBtn.style.opacity = '1';
+        error.add(checkBox);
       }
+
+      check();
     });
 
     form.addEventListener('submit',(e)=>{

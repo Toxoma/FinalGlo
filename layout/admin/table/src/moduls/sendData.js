@@ -1,6 +1,6 @@
 import getData from './getData.js';
 
-const sendData = (form) => {
+const sendData = (form,key) => {
   'use strict';
 
 
@@ -28,10 +28,34 @@ const sendData = (form) => {
   };
 
   const postData = (data)=>{
-    console.log('data: ', JSON.stringify(data));
 
     fetch('http://localhost:3000/api/items', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+    .then((response) => {
+      if (response.status === 200 || response.status === 201) {
+        clearInput(form);
+        getData();
+        document.getElementById('modal').click();
+      }else{
+        throw new Error('status network not 200');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      clearInput(form);
+      mistake();
+    });
+  };
+
+  const changeData = (data)=>{
+
+    fetch(`http://localhost:3000/api/items/${key}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -70,11 +94,15 @@ const sendData = (form) => {
         }
       });
 
-      postData(arr);
+      if (key) {
+        changeData(arr);
+      }else{
+        postData(arr);
+      }
+
     } catch (error) {
       console.error('error: ', error);
     }
-
   };
 
   getFormData();
